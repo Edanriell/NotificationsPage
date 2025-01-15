@@ -1,8 +1,10 @@
 /* @refresh reload */
 import { render } from "solid-js/web";
-import "./index.css";
-import App from "./App.tsx";
+
+import { Routes } from "./routes";
+
+import "./styles/styles.less";
 
 const root = document.getElementById("root");
 
-render(() => <App />, root!);
+render(() => <Routes />, root!);
