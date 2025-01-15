@@ -1,5 +1,13 @@
+import { RootLayout } from "@widgets/layout/root/ui";
+
 import { type Component } from "solid-js";
 
 export const NotFoundPage: Component = () => {
-	return <h1>Not Found</h1>;
+	return (
+		<RootLayout>
+			<main>
+				<h1>Not Found Page</h1>
+			</main>
+		</RootLayout>
+	);
 };
