@@ -20,6 +20,7 @@
 		padding: 33rem 30rem 17rem 30rem;
 		border-radius: 15rem;
 		box-shadow: 0 20rem 60rem 0 rgba(73, 97, 168, 0.05);
+		max-width: 610rem;
 	}
 
 	@media (width >= 1440px) {
