@@ -1,7 +1,7 @@
 import { type Component } from "solid-js";
 
-import { formatTime } from "../lib";
-import { type TNotification } from "../model";
+import { formatTime } from "../../lib";
+import { type TNotification } from "../../model";
 
 // import styles from "./notification.module.css"
 
