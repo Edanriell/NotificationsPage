@@ -3,28 +3,36 @@ import { type Component } from "solid-js";
 import { formatTime } from "../../lib";
 import { type SingleNotification } from "../../model";
 
-// import styles from "./notification.module.css"
+import styles from "./notification.module.css";
+
+// notification-${notification.type}
 
 export const Notification: Component<{ notification: SingleNotification }> = ({ notification }) => {
 	return (
-		<article class={`notification notification-${notification.type}`}>
-			<div class="notification-image">
+		<article class={styles["notification"]}>
+			<div class={styles["notification__user-image-wrapper"]}>
 				<img src={notification.userAvatar} alt={`${notification.userName}'s avatar`} />
 			</div>
-			<div class="notification-content">
-				<h2 class="notification-title">
-					<span class="user-name">{notification.userName}</span>{" "}
+			<div class={styles["notification__content"]}>
+				<h2 class={styles["notification__title"]}>
+					<a class={styles["notification__user-name"]} href="#">
+						<span>{notification.userName}</span>
+					</a>{" "}
 					{notification.type === "reaction" && (
 						<>
 							reacted to your recent post{" "}
-							<span class="post-title">{notification.postTitle}</span>
+							<a class={styles["notification__post-title"]} href="#">
+								<span>{notification.postTitle}</span>
+							</a>
 						</>
 					)}
 					{notification.type === "follow" && <>followed you</>}
 					{notification.type === "group-join" && (
 						<>
 							has joined your group{" "}
-							<span class="group-name">{notification.groupName}</span>
+							<a class={styles["notification__group-name"]} href="#">
+								<span>{notification.groupName}</span>
+							</a>
 						</>
 					)}
 					{notification.type === "message" && <>sent you a private message</>}
@@ -35,7 +43,7 @@ export const Notification: Component<{ notification: SingleNotification }> = ({ 
 								<img
 									src={notification.commentImage}
 									alt="Commented on your picture"
-									class="comment-image"
+									class={styles["notification__user-image-message"]}
 								/>
 							)}{" "}
 							on your picture
@@ -44,18 +52,27 @@ export const Notification: Component<{ notification: SingleNotification }> = ({ 
 					{notification.type === "post-reaction" && (
 						<>
 							reacted to your recent post{" "}
-							<span class="post-title">{notification.postTitle}</span>
+							<a class={styles["notification__post-title"]} href="#">
+								<span>{notification.postTitle}</span>
+							</a>
 						</>
 					)}
 					{notification.type === "group-leave" && (
 						<>
-							left the group <span class="group-name">{notification.groupName}</span>
+							left the group{" "}
+							<a class={styles["notification__group-name"]} href="#">
+								<span>{notification.groupName}</span>
+							</a>
 						</>
 					)}
 				</h2>
-				<time dateTime={notification.time}>{formatTime(notification.time)}</time>
+				<time class={styles["notification__time"]} dateTime={notification.time}>
+					{formatTime(notification.time)}
+				</time>
 				{notification.type === "message" && notification.content && (
-					<p class="message-preview">{notification.content}</p>
+					<p class={styles["notification__user-message-preview"]}>
+						{notification.content}
+					</p>
 				)}
 			</div>
 		</article>
