@@ -7,6 +7,8 @@
 		align-items: center;
 		justify-content: center;
 		min-height: 100vh;
+		margin-top: 63rem;
+		margin-bottom: 89rem;
 	}
 }
 
@@ -17,10 +19,10 @@
 	padding: 24rem 16rem 29rem 16rem;
 
 	@media (width >= 768px) {
-		padding: 33rem 30rem 17rem 30rem;
+		padding: 33rem 30rem 0 30rem;
 		border-radius: 15rem;
 		box-shadow: 0 20rem 60rem 0 rgba(73, 97, 168, 0.05);
-		max-width: 610rem;
+		max-width: 620rem;
 	}
 
 	@media (width >= 1440px) {

@@ -11,4 +11,5 @@
 
 .notification-list__item {
 	position: relative;
+	width: 100%;
 }
