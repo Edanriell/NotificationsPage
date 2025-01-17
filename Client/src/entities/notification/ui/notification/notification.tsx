@@ -1,11 +1,11 @@
 import { type Component } from "solid-js";
 
 import { formatTime } from "../../lib";
-import { type TNotification } from "../../model";
+import { type SingleNotification } from "../../model";
 
 // import styles from "./notification.module.css"
 
-export const Notification: Component<{ notification: TNotification }> = ({ notification }) => {
+export const Notification: Component<{ notification: SingleNotification }> = ({ notification }) => {
 	return (
 		<article class={`notification notification-${notification.type}`}>
 			<div class="notification-image">

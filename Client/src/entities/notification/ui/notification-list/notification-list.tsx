@@ -1,10 +1,12 @@
 import { type Component, For } from "solid-js";
 
+import { type SingleNotification } from "../../model";
+
 import { Notification } from "../notification";
 
 import styles from "./notification-list.module.css";
 
-const notificationsData = [
+const notificationsData: Array<SingleNotification> = [
 	{
 		id: "1",
 		type: "reaction",
