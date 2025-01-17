@@ -18,8 +18,8 @@ const notificationsData: Array<SingleNotification> = [
 	{
 		id: "2",
 		type: "follow",
-		userName: "images/raster/users/angela-gray.jpg",
-		userAvatar: "angela-gray.jpg",
+		userName: "Angela Gray",
+		userAvatar: "images/raster/users/angela-gray.jpg",
 		time: "2025-01-16T14:55:00Z"
 	},
 	{
@@ -45,7 +45,7 @@ const notificationsData: Array<SingleNotification> = [
 		userName: "Kimberly Smith",
 		userAvatar: "images/raster/users/kimberly-smith.jpg",
 		time: "2025-01-09T14:00:00Z",
-		commentImage: "comment-image.jpg"
+		commentImage: "images/raster/comment-image.jpg"
 	},
 	{
 		id: "6",

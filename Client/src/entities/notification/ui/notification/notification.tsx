@@ -11,7 +11,11 @@ export const Notification: Component<{ notification: SingleNotification }> = ({ 
 	return (
 		<article class={styles["notification"]}>
 			<div class={styles["notification__user-image-wrapper"]}>
-				<img src={notification.userAvatar} alt={`${notification.userName}'s avatar`} />
+				<img
+					class={styles["notification__user-image"]}
+					src={notification.userAvatar}
+					alt={`${notification.userName}'s avatar`}
+				/>
 			</div>
 			<div class={styles["notification__content"]}>
 				<h2 class={styles["notification__title"]}>
@@ -38,15 +42,14 @@ export const Notification: Component<{ notification: SingleNotification }> = ({ 
 					{notification.type === "message" && <>sent you a private message</>}
 					{notification.type === "comment" && (
 						<>
-							commented{" "}
+							commented on your picture
 							{notification.commentImage && (
 								<img
 									src={notification.commentImage}
 									alt="Commented on your picture"
 									class={styles["notification__user-image-message"]}
 								/>
-							)}{" "}
-							on your picture
+							)}
 						</>
 					)}
 					{notification.type === "post-reaction" && (
