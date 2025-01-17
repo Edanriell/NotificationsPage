@@ -1,0 +1,14 @@
+.notification-list {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	row-gap: 10rem;
+
+	@media (width >= 768px) {
+		row-gap: 8rem;
+	}
+}
+
+.notification-list__item {
+	position: relative;
+}

@@ -1,4 +1,4 @@
-export type TNotification = {
+export type SingleNotification = {
 	id: string;
 	type:
 		| "reaction"

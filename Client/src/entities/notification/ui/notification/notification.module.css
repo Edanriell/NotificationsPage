@@ -1,0 +1,78 @@
+.notification {
+	display: flex;
+	flex-direction: row;
+	column-gap: 13rem;
+}
+
+.notification__user-image-wrapper {
+	width: 39rem;
+	height: 39rem;
+	border-radius: 100%;
+	border: 1rem solid rgba(0, 0, 0, 0.05);
+	object-fit: cover;
+}
+
+.notification__content {
+	display: flex;
+	flex-direction: column;
+}
+
+.notification__title {
+	font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+	font-weight: 500;
+	font-size: 14rem;
+	color: var(--4---dark-grey-blue, #5e6778);
+}
+
+.notification__user-name {
+	font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+	font-weight: 800;
+	font-size: 14rem;
+	color: var(--3---very-dark-grey-blue, #1c202b);
+}
+
+.notification__post-title {
+	font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+	font-weight: 700;
+	font-size: 14rem;
+	color: var(--4---dark-grey-blue, #5e6778);
+}
+
+.notification__group-name {
+	font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+	font-weight: 700;
+	font-size: 14rem;
+	color: var(--1---blue, #0a327b);
+}
+
+.notification__post-title {
+	font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+	font-weight: 700;
+	font-size: 14rem;
+	color: var(--4---dark-grey-blue, #5e6778);
+}
+
+.notification__user-image-message {
+	border-radius: 7rem;
+	width: 39rem;
+	height: 39rem;
+	object-fit: cover;
+}
+
+.notification__user-message-preview {
+	font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+	font-weight: 500;
+	font-size: 14rem;
+	color: var(--4---dark-grey-blue, #5e6778);
+	padding: 16rem;
+	border: 1rem solid var(--7---very-light-grey-blue, #dde7ee);
+	border-radius: 5rem;
+	background: var(--9---white, #fff);
+}
+
+.notification__time {
+	font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+	font-weight: 500;
+	font-size: 14rem;
+	color: var(--5---grey-blue, #939cad);
+}
