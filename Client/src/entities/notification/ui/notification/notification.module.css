@@ -2,6 +2,16 @@
 	display: flex;
 	flex-direction: row;
 	column-gap: 13rem;
+	border-radius: 8rem;
+	padding: 16rem;
+}
+
+.notification--type--read {
+	background: transparent;
+}
+
+.notification--type--unread {
+	background: var(--8---snow, #f7fafd);
 }
 
 .notification__user-image-wrapper {
@@ -18,6 +28,12 @@
 	border-radius: 100%;
 	border: 1rem solid rgba(0, 0, 0, 0.05);
 	object-fit: cover;
+}
+
+.notification__content-wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
 }
 
 .notification__content {
@@ -65,6 +81,7 @@
 	width: 39rem;
 	height: 39rem;
 	object-fit: cover;
+	margin-left: 27rem;
 }
 
 .notification__user-message-preview {
@@ -76,6 +93,7 @@
 	border: 1rem solid var(--7---very-light-grey-blue, #dde7ee);
 	border-radius: 5rem;
 	background: var(--9---white, #fff);
+	margin-top: 12rem;
 }
 
 .notification__time {
@@ -83,4 +101,14 @@
 	font-weight: 500;
 	font-size: 14rem;
 	color: var(--5---grey-blue, #939cad);
+	margin-top: 3rem;
+}
+
+.notification__red-dot {
+	width: 8rem;
+	height: 8rem;
+	border-radius: 100%;
+	background-color: var(--2---red, #f65552);
+	display: inline-block;
+	margin: auto 0 auto 6rem;
 }

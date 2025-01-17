@@ -8,6 +8,7 @@ export type SingleNotification = {
 		| "comment"
 		| "post-reaction"
 		| "group-leave";
+	isRead: boolean;
 	userName: string;
 	userAvatar: string;
 	time: string;

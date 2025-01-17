@@ -10,6 +10,7 @@ const notificationsData: Array<SingleNotification> = [
 	{
 		id: "1",
 		type: "reaction",
+		isRead: false,
 		userName: "Mark Webber",
 		userAvatar: "images/raster/users/mark-webber.jpg",
 		time: "2025-01-16T14:59:00Z",
@@ -18,6 +19,7 @@ const notificationsData: Array<SingleNotification> = [
 	{
 		id: "2",
 		type: "follow",
+		isRead: false,
 		userName: "Angela Gray",
 		userAvatar: "images/raster/users/angela-gray.jpg",
 		time: "2025-01-16T14:55:00Z"
@@ -25,6 +27,7 @@ const notificationsData: Array<SingleNotification> = [
 	{
 		id: "3",
 		type: "group-join",
+		isRead: false,
 		userName: "Jacob Thompson",
 		userAvatar: "images/raster/users/jacob-thompson.jpg",
 		time: "2025-01-15T14:00:00Z",
@@ -33,6 +36,7 @@ const notificationsData: Array<SingleNotification> = [
 	{
 		id: "4",
 		type: "message",
+		isRead: true,
 		userName: "Rizky Hasanuddin",
 		userAvatar: "images/raster/users/rizky-hasanuddin.jpg",
 		time: "2025-01-11T14:00:00Z",
@@ -42,6 +46,7 @@ const notificationsData: Array<SingleNotification> = [
 	{
 		id: "5",
 		type: "comment",
+		isRead: true,
 		userName: "Kimberly Smith",
 		userAvatar: "images/raster/users/kimberly-smith.jpg",
 		time: "2025-01-09T14:00:00Z",
@@ -50,6 +55,7 @@ const notificationsData: Array<SingleNotification> = [
 	{
 		id: "6",
 		type: "post-reaction",
+		isRead: true,
 		userName: "Nathan Peterson",
 		userAvatar: "images/raster/users/nathan-peterson.jpg",
 		time: "2025-01-02T14:00:00Z",
@@ -58,6 +64,7 @@ const notificationsData: Array<SingleNotification> = [
 	{
 		id: "7",
 		type: "group-leave",
+		isRead: true,
 		userName: "Anna Kim",
 		userAvatar: "images/raster/users/anna-kim.jpg",
 		time: "2025-01-01T14:00:00Z",
