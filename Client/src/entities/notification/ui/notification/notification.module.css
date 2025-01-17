@@ -4,6 +4,11 @@
 	column-gap: 13rem;
 	border-radius: 8rem;
 	padding: 16rem;
+
+	@media (width >= 768px) {
+		padding: 18rem 20rem 17rem 20rem;
+		column-gap: 19rem;
+	}
 }
 
 .notification--type--read {
@@ -20,6 +25,11 @@
 	border-radius: 100%;
 	border: 1rem solid rgba(0, 0, 0, 0.05);
 	object-fit: cover;
+
+	@media (width >= 768px) {
+		width: 45rem;
+		height: 45rem;
+	}
 }
 
 .notification__user-image {
@@ -28,6 +38,11 @@
 	border-radius: 100%;
 	border: 1rem solid rgba(0, 0, 0, 0.05);
 	object-fit: cover;
+
+	@media (width >= 768px) {
+		width: 45rem;
+		height: 45rem;
+	}
 }
 
 .notification__content-wrapper {
@@ -46,6 +61,10 @@
 	font-weight: 500;
 	font-size: 14rem;
 	color: var(--4---dark-grey-blue, #5e6778);
+
+	@media (width >= 768px) {
+		font-size: 16rem;
+	}
 }
 
 .notification__user-name {
@@ -53,6 +72,10 @@
 	font-weight: 800;
 	font-size: 14rem;
 	color: var(--3---very-dark-grey-blue, #1c202b);
+
+	@media (width >= 768px) {
+		font-size: 16rem;
+	}
 }
 
 .notification__post-title {
@@ -60,6 +83,10 @@
 	font-weight: 700;
 	font-size: 14rem;
 	color: var(--4---dark-grey-blue, #5e6778);
+
+	@media (width >= 768px) {
+		font-size: 16rem;
+	}
 }
 
 .notification__group-name {
@@ -67,6 +94,10 @@
 	font-weight: 700;
 	font-size: 14rem;
 	color: var(--1---blue, #0a327b);
+
+	@media (width >= 768px) {
+		font-size: 16rem;
+	}
 }
 
 .notification__post-title {
@@ -74,6 +105,10 @@
 	font-weight: 700;
 	font-size: 14rem;
 	color: var(--4---dark-grey-blue, #5e6778);
+
+	@media (width >= 768px) {
+		font-size: 16rem;
+	}
 }
 
 .notification__user-image-message {
@@ -82,6 +117,12 @@
 	height: 39rem;
 	object-fit: cover;
 	margin-left: 27rem;
+
+	@media (width >= 768px) {
+		width: 45rem;
+		height: 45rem;
+		margin-left: auto;
+	}
 }
 
 .notification__user-message-preview {
@@ -94,6 +135,11 @@
 	border-radius: 5rem;
 	background: var(--9---white, #fff);
 	margin-top: 12rem;
+
+	@media (width >= 768px) {
+		font-size: 16rem;
+		padding: 17rem 20rem 20rem 20rem;
+	}
 }
 
 .notification__time {
@@ -102,6 +148,10 @@
 	font-size: 14rem;
 	color: var(--5---grey-blue, #939cad);
 	margin-top: 3rem;
+
+	@media (width >= 768px) {
+		font-size: 16rem;
+	}
 }
 
 .notification__red-dot {
