@@ -11,14 +11,14 @@ const notificationsData: Array<SingleNotification> = [
 		id: "1",
 		type: "reaction",
 		userName: "Mark Webber",
-		userAvatar: "mark-webber.jpg",
+		userAvatar: "images/raster/users/mark-webber.jpg",
 		time: "2025-01-16T14:59:00Z",
 		postTitle: "My first tournament today!"
 	},
 	{
 		id: "2",
 		type: "follow",
-		userName: "Angela Gray",
+		userName: "images/raster/users/angela-gray.jpg",
 		userAvatar: "angela-gray.jpg",
 		time: "2025-01-16T14:55:00Z"
 	},
@@ -26,7 +26,7 @@ const notificationsData: Array<SingleNotification> = [
 		id: "3",
 		type: "group-join",
 		userName: "Jacob Thompson",
-		userAvatar: "jacob-thompson.jpg",
+		userAvatar: "images/raster/users/jacob-thompson.jpg",
 		time: "2025-01-15T14:00:00Z",
 		groupName: "Chess Club"
 	},
@@ -34,7 +34,7 @@ const notificationsData: Array<SingleNotification> = [
 		id: "4",
 		type: "message",
 		userName: "Rizky Hasanuddin",
-		userAvatar: "rizky-hasanuddin.jpg",
+		userAvatar: "images/raster/users/rizky-hasanuddin.jpg",
 		time: "2025-01-11T14:00:00Z",
 		content:
 			"Hello, thanks for setting up the Chess Club. I’ve been a member for a few weeks now and I’m already having lots of fun and improving my game."
@@ -43,7 +43,7 @@ const notificationsData: Array<SingleNotification> = [
 		id: "5",
 		type: "comment",
 		userName: "Kimberly Smith",
-		userAvatar: "kimberly-smith.jpg",
+		userAvatar: "images/raster/users/kimberly-smith.jpg",
 		time: "2025-01-09T14:00:00Z",
 		commentImage: "comment-image.jpg"
 	},
@@ -51,7 +51,7 @@ const notificationsData: Array<SingleNotification> = [
 		id: "6",
 		type: "post-reaction",
 		userName: "Nathan Peterson",
-		userAvatar: "nathan-peterson.jpg",
+		userAvatar: "images/raster/users/nathan-peterson.jpg",
 		time: "2025-01-02T14:00:00Z",
 		postTitle: "5 end-game strategies to increase your win rate"
 	},
@@ -59,7 +59,7 @@ const notificationsData: Array<SingleNotification> = [
 		id: "7",
 		type: "group-leave",
 		userName: "Anna Kim",
-		userAvatar: "anna-kim.jpg",
+		userAvatar: "images/raster/users/anna-kim.jpg",
 		time: "2025-01-01T14:00:00Z",
 		groupName: "Chess Club"
 	}
