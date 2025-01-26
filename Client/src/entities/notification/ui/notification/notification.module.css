@@ -96,7 +96,7 @@
 	border-radius: 5rem;
 	background-color: var(--9---white, #fff);
 	margin-top: 12rem;
-	transition: background-color 250ms cubic-bezier(.455, .03, .515, .955);
+	transition: background-color 200ms cubic-bezier(.455, .03, .515, .955);
 	will-change: background-color;
 
 	@media (width >= 768px) {
