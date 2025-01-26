@@ -5,8 +5,22 @@
 	text-align: right;
 	color: var(--4---dark-grey-blue, #5e6778);
 	cursor: pointer;
+	transition: color 200ms cubic-bezier(.455, .03, .515, .955);
+	will-change: color;
 
 	@media (width >= 768px) {
 		font-size: 16rem;
+	}
+
+	&:hover {
+		color: var(--1---blue, #0a327b);
+	}
+
+	&:active {
+		color: var(--1---blue, #0a327b);
+	}
+
+	&:focus {
+		color: var(--1---blue, #0a327b);
 	}
 }
