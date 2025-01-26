@@ -72,9 +72,11 @@ export const Notification: Component<{ notification: SingleNotification }> = ({ 
 						{formatTime(notification.time)}
 					</time>
 					{notification.type === "message" && notification.content && (
-						<p class={styles["notification__user-message-preview"]}>
-							{notification.content}
-						</p>
+						<a href="#">
+							<p class={styles["notification__user-message-preview"]}>
+								{notification.content}
+							</p>
+						</a>
 					)}
 				</div>
 				{notification.type === "comment" && (
