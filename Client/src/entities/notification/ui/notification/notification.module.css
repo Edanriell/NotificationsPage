@@ -72,50 +72,6 @@
 	}
 }
 
-.notification__user-name {
-	font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
-	font-weight: 800;
-	font-size: 14rem;
-	color: var(--3---very-dark-grey-blue, #1c202b);
-
-	@media (width >= 768px) {
-		font-size: 16rem;
-	}
-}
-
-.notification__post-title {
-	font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
-	font-weight: 700;
-	font-size: 14rem;
-	color: var(--4---dark-grey-blue, #5e6778);
-
-	@media (width >= 768px) {
-		font-size: 16rem;
-	}
-}
-
-.notification__group-name {
-	font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
-	font-weight: 700;
-	font-size: 14rem;
-	color: var(--1---blue, #0a327b);
-
-	@media (width >= 768px) {
-		font-size: 16rem;
-	}
-}
-
-.notification__post-title {
-	font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
-	font-weight: 700;
-	font-size: 14rem;
-	color: var(--4---dark-grey-blue, #5e6778);
-
-	@media (width >= 768px) {
-		font-size: 16rem;
-	}
-}
-
 .notification__user-image-message {
 	border-radius: 7rem;
 	width: 39rem;

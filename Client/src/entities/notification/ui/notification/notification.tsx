@@ -1,5 +1,7 @@
 import { type Component } from "solid-js";
 
+import { Link } from "@shared/ui/link/ui";
+
 import { formatTime } from "../../lib";
 import { type SingleNotification } from "../../model";
 
@@ -24,41 +26,41 @@ export const Notification: Component<{ notification: SingleNotification }> = ({ 
 			<div class={styles["notification__content-wrapper"]}>
 				<div class={styles["notification__content"]}>
 					<h2 class={styles["notification__title"]}>
-						<a class={styles["notification__user-name"]} href="#">
-							<span>{notification.userName}</span>
-						</a>{" "}
+						<Link linkColor="dark-grey-blue" href="#">
+							{notification.userName}
+						</Link>{" "}
 						{notification.type === "reaction" && (
 							<>
 								reacted to your recent post{" "}
-								<a class={styles["notification__post-title"]} href="#">
-									<span>{notification.postTitle}</span>
-								</a>
+								<Link linkColor="dark-grey" href="#">
+									{notification.postTitle}
+								</Link>
 							</>
 						)}
 						{notification.type === "follow" && <>followed you</>}
 						{notification.type === "group-join" && (
 							<>
 								has joined your group{" "}
-								<a class={styles["notification__group-name"]} href="#">
-									<span>{notification.groupName}</span>
-								</a>
+								<Link linkColor="blue" href="#">
+									{notification.groupName}
+								</Link>
 							</>
 						)}
 						{notification.type === "message" && <>sent you a private message</>}
 						{notification.type === "post-reaction" && (
 							<>
 								reacted to your recent post{" "}
-								<a class={styles["notification__post-title"]} href="#">
-									<span>{notification.postTitle}</span>
-								</a>
+								<Link linkColor="dark-grey" href="#">
+									{notification.postTitle}
+								</Link>
 							</>
 						)}
 						{notification.type === "group-leave" && (
 							<>
 								left the group{" "}
-								<a class={styles["notification__group-name"]} href="#">
-									<span>{notification.groupName}</span>
-								</a>
+								<Link linkColor="blue" href="#">
+									{notification.groupName}
+								</Link>
 							</>
 						)}
 						{notification.type === "comment" && <>commented on your picture</>}
@@ -78,11 +80,13 @@ export const Notification: Component<{ notification: SingleNotification }> = ({ 
 				{notification.type === "comment" && (
 					<>
 						{notification.commentImage && (
-							<img
-								src={notification.commentImage}
-								alt="Commented on your picture"
-								class={styles["notification__user-image-message"]}
-							/>
+							<a href="#">
+								<img
+									src={notification.commentImage}
+									alt="Commented on your picture"
+									class={styles["notification__user-image-message"]}
+								/>
+							</a>
 						)}
 					</>
 				)}

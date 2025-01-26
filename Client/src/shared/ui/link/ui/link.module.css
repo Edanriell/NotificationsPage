@@ -1,0 +1,21 @@
+.link {
+	font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+	font-weight: 800;
+	font-size: 14rem;
+
+	@media (width >= 768px) {
+		font-size: 16rem;
+	}
+}
+
+.link--color--dark-grey-blue {
+	color: var(--3---very-dark-grey-blue, #1c202b);
+}
+
+.link--color--dark-grey {
+	color: var(--4---dark-grey-blue, #5e6778);
+}
+
+.link--color--blue {
+	color: var(--1---blue, #0a327b);
+}
