@@ -4,6 +4,8 @@ import { NotificationList } from "@entities/notification/ui/notification-list";
 
 import { RootLayout } from "@widgets/layout/root/ui";
 
+import { Button } from "@shared/ui/button/ui";
+
 import styles from "./notifications.module.css";
 
 export const NotificationsPage: Component = () => {
@@ -17,9 +19,7 @@ export const NotificationsPage: Component = () => {
 							Notifications{" "}
 							<span class={styles["notifications-page__notifications-count"]}>3</span>
 						</h2>
-						<button class={styles["button"]} type="button">
-							Mark all as read
-						</button>
+						<Button>Mark all as read</Button>
 					</header>
 					<NotificationList />
 				</section>

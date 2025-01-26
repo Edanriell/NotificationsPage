@@ -1,0 +1,12 @@
+.button {
+	font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+	font-weight: 500;
+	font-size: 14rem;
+	text-align: right;
+	color: var(--4---dark-grey-blue, #5e6778);
+	cursor: pointer;
+
+	@media (width >= 768px) {
+		font-size: 16rem;
+	}
+}
