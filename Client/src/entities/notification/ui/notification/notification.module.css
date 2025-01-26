@@ -94,13 +94,23 @@
 	padding: 16rem;
 	border: 1rem solid var(--7---very-light-grey-blue, #dde7ee);
 	border-radius: 5rem;
-	background: var(--9---white, #fff);
+	background-color: var(--9---white, #fff);
 	margin-top: 12rem;
+	transition: background-color 250ms cubic-bezier(.455, .03, .515, .955);
+	will-change: background-color;
 
 	@media (width >= 768px) {
 		font-size: 16rem;
 		padding: 17rem 20rem 20rem 20rem;
 		margin-top: 13rem;
+	}
+
+	&:hover {
+		background-color: var(--6---light-grey-blue, #e5effa);
+	}
+
+	&:active {
+		background-color: var(--6---light-grey-blue, #e5effa);
 	}
 }
 
