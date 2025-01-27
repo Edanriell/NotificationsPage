@@ -1,0 +1,13 @@
+{
+	"name": "Server",
+	"scripts": {
+		"start:dev": "bun run --hot src/index.ts"
+	},
+	"dependencies": {
+		"hono": "^4.6.19"
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"prettier": "^3.4.2"
+	}
+}
