@@ -1,13 +1,27 @@
 {
 	"name": "Server",
 	"scripts": {
-		"start:dev": "bun run --hot src/index.ts"
+		"start:dev": "bun run --hot src/main.ts"
 	},
 	"dependencies": {
-		"hono": "^4.6.19"
+		"@prisma/client": "^6.2.1",
+		"hono": "^4.6.19",
+		"pg": "^8.13.1",
+		"pino": "^9.6.0",
+		"prisma": "^6.2.1"
 	},
 	"devDependencies": {
+		"@hono/eslint-config": "^1.0.2",
+		"@hono/zod-validator": "^0.4.2",
 		"@types/bun": "latest",
-		"prettier": "^3.4.2"
+		"@types/eslint": "^9.6.1",
+		"@types/pg": "^8.11.11",
+		"bun-types": "^1.2.0",
+		"depcheck": "^1.4.7",
+		"eslint": "^9.19.0",
+		"eslint-config-prettier": "^10.0.1",
+		"eslint-plugin-prettier": "^5.2.3",
+		"prettier": "^3.4.2",
+		"zod": "^3.24.1"
 	}
 }
