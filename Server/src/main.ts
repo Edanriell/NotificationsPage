@@ -10,9 +10,9 @@ import { API_PREFIX } from "./constants";
 
 import { cacheMiddleware } from "./middlewares/cacheMiddleware";
 import { rateLimitMiddleware } from "./middlewares/rateLimiting";
-import { ChatDBResource, MessageDBResource, UserDBResource } from "../storage/orm";
+import { ChatDBResource, MessageDBResource, UserDBResource } from "./storage/orm";
 
-import { CHAT_PREFIX, createChatApp } from "./chat";
+import { CHAT_PREFIX, createChatApp } from "./controllers/chat";
 
 const corsOptions = {
 	origin: [Bun.env.CORS_ORIGIN as string],
