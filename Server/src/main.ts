@@ -12,7 +12,7 @@ import { cacheMiddleware } from "./middlewares/cacheMiddleware";
 import { rateLimitMiddleware } from "./middlewares/rateLimiting";
 import { ChatDBResource, MessageDBResource } from "./storage/orm";
 
-import { CHAT_PREFIX, createChatApp } from "./controllers/chat";
+import { createNotificationsApp, NOTIFICATIONS_PREFIX } from "./controllers/notifications";
 
 const corsOptions = {
 	origin: [Bun.env.CORS_ORIGIN as string],
@@ -20,7 +20,7 @@ const corsOptions = {
 	maxAge: 86400
 };
 
-export function createMainApp(chatApp: Hono<ContextVariables>) {
+export function createMainApp(notificationsApp: Hono<ContextVariables>) {
 	const app = new Hono<ContextVariables>().basePath(API_PREFIX);
 
 	app.use("*", cors(corsOptions));
@@ -29,7 +29,7 @@ export function createMainApp(chatApp: Hono<ContextVariables>) {
 	app.use("*", rateLimitMiddleware);
 	app.use("*", cacheMiddleware());
 
-	app.route(CHAT_PREFIX, chatApp);
+	app.route(NOTIFICATIONS_PREFIX, notificationsApp);
 	showRoutes(app);
 
 	return app;
@@ -38,5 +38,7 @@ export function createMainApp(chatApp: Hono<ContextVariables>) {
 export function createORMApp() {
 	const prisma = new PrismaClient();
 	prisma.$connect();
-	return createMainApp(createChatApp(new ChatDBResource(prisma), new MessageDBResource(prisma)));
+	return createMainApp(
+		createNotificationsApp(new ChatDBResource(prisma), new MessageDBResource(prisma))
+	);
 }
