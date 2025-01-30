@@ -8,8 +8,8 @@ import { PrismaClient } from "@prisma/client";
 import type { ContextVariables } from "./constants";
 import { API_PREFIX } from "./constants";
 
-import { cacheMiddleware } from "../middlewares/cacheMiddleware";
-import { rateLimitMiddleware } from "../middlewares/rateLimiting";
+import { cacheMiddleware } from "./middlewares/cacheMiddleware";
+import { rateLimitMiddleware } from "./middlewares/rateLimiting";
 import { ChatDBResource, MessageDBResource, UserDBResource } from "../storage/orm";
 
 import { CHAT_PREFIX, createChatApp } from "./chat";
