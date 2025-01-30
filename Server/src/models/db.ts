@@ -1,30 +1,31 @@
-export type Email = `${string}@${string}.${string}`;
-
-export interface DBEntity {
+export type DBEntity = {
 	id: string;
 	createdAt: Date;
 	updatedAt: Date;
-}
+};
 
-export interface DBUser extends DBEntity {
-	name: string;
-	email: Email;
-	password: string;
-}
+type NotificationType =
+	| "reaction"
+	| "follow"
+	| "group-join"
+	| "message"
+	| "comment"
+	| "post-reaction"
+	| "group-leave";
 
-export interface DBChat extends DBEntity {
-	ownerId: DBUser["id"];
-	name: string;
-}
+export type DBNotification = DBEntity & {
+	type: NotificationType;
+	isRead: boolean;
+	userName: string;
+	userAvatar: string;
+	time: string;
+	content?: string;
+	postTitle?: string;
+	groupName?: string;
+	commentImage?: string;
+};
 
-export type MessageType = "assistant" | "user";
-
-export interface DBMessage extends DBEntity {
-	chatId: DBChat["id"];
-	type: MessageType;
-	message: string;
-}
-
-export type DBCreateUser = Pick<DBUser, "email" | "password" | "name">;
-export type DBCreateChat = Pick<DBChat, "name" | "ownerId">;
-export type DBCreateMessage = Pick<DBMessage, "chatId" | "message" | "type">;
+export type DBGetNotification = Pick<DBNotification, "id">;
+export type DBCreateNotification = Omit<DBNotification, "id" | "createdAt" | "updatedAt">;
+export type DBUpdateNotification = Partial<DBNotification>;
+export type DBDeleteNotification = Pick<DBNotification, "id">;

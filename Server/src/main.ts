@@ -10,18 +10,17 @@ import { API_PREFIX } from "./constants";
 
 import { cacheMiddleware } from "./middlewares/cacheMiddleware";
 import { rateLimitMiddleware } from "./middlewares/rateLimiting";
-import { ChatDBResource, MessageDBResource, UserDBResource } from "./storage/orm";
+import { ChatDBResource, MessageDBResource } from "./storage/orm";
 
 import { CHAT_PREFIX, createChatApp } from "./controllers/chat";
 
 const corsOptions = {
 	origin: [Bun.env.CORS_ORIGIN as string],
 	allowMethods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-	allowHeaders: ["Content-Type", "Authorization"],
 	maxAge: 86400
 };
 
-export function createMainApp(authApp: Hono<ContextVariables>, chatApp: Hono<ContextVariables>) {
+export function createMainApp(chatApp: Hono<ContextVariables>) {
 	const app = new Hono<ContextVariables>().basePath(API_PREFIX);
 
 	app.use("*", cors(corsOptions));
@@ -39,8 +38,5 @@ export function createMainApp(authApp: Hono<ContextVariables>, chatApp: Hono<Con
 export function createORMApp() {
 	const prisma = new PrismaClient();
 	prisma.$connect();
-	return createMainApp(
-		createAuthApp(new UserDBResource(prisma)),
-		createChatApp(new ChatDBResource(prisma), new MessageDBResource(prisma))
-	);
+	return createMainApp(createChatApp(new ChatDBResource(prisma), new MessageDBResource(prisma)));
 }
