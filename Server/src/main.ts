@@ -10,9 +10,9 @@ import { API_PREFIX } from "./constants";
 
 import { cacheMiddleware } from "./middlewares/cacheMiddleware";
 import { rateLimitMiddleware } from "./middlewares/rateLimiting";
-import { ChatDBResource, MessageDBResource } from "./storage/orm";
 
 import { createNotificationsApp, NOTIFICATIONS_PREFIX } from "./controllers/notifications";
+import { NotificationsService } from "./services/notifications";
 
 const corsOptions = {
 	origin: [Bun.env.CORS_ORIGIN as string],
@@ -38,7 +38,5 @@ export function createMainApp(notificationsApp: Hono<ContextVariables>) {
 export function createORMApp() {
 	const prisma = new PrismaClient();
 	prisma.$connect();
-	return createMainApp(
-		createNotificationsApp(new ChatDBResource(prisma), new MessageDBResource(prisma))
-	);
+	return createMainApp(createNotificationsApp(new NotificationsService(prisma)));
 }
