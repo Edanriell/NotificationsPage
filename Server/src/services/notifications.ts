@@ -13,6 +13,11 @@ export class NotificationsService
 		this.prisma = prisma;
 	}
 
+	async get(id: string): Promise<DBNotification | null> {
+		const notifications = await this.prisma.notification.findFirst({ where: { id } });
+		return notifications as DBNotification | null;
+	}
+
 	async find(data: Partial<DBNotification>): Promise<DBNotification | null> {
 		const notification = await this.prisma.notification.findFirst({ where: { ...data } });
 		return notification as DBNotification | null;

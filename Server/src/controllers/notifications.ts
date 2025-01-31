@@ -4,12 +4,7 @@ import { z } from "zod";
 
 import type { ContextVariables } from "../constants";
 import type { DBCreateNotification, DBNotification } from "../models/db";
-import type { IDatabaseResource } from "../storage/types";
-
-// TODO FIX CODE
-// FIX SERVICE ADD GET
-// GET RETURNS ALL NOTIFICATIONS
-// FIND ACCEPTS BODY AND FINDS BY BODY
+import type { IDatabaseResource } from "../services/types";
 
 const idSchema = z.object({
 	id: z.string().min(1)
@@ -38,7 +33,9 @@ const notificationSchema = z.object({
 export const NOTIFICATIONS_PREFIX = "/notifications/";
 
 const NOTIFICATIONS_ROUTE = "";
-const NOTIFICATIONS_FIND_ROUTE = ":id/";
+const NOTIFICATIONS_FIND_ROUTE = "find/";
+const NOTIFICATIONS_FIND_ALL_ROUTE = "findAll/";
+const NOTIFICATIONS_GET_BY_ID_ROUTE = ":id/";
 const NOTIFICATIONS_CREATE_ROUTE = "";
 const NOTIFICATIONS_UPDATE_ROUTE = ":id/";
 const NOTIFICATIONS_DELETE_ROUTE = ":id/";
@@ -48,88 +45,112 @@ export function createNotificationsApp(
 ) {
 	const notificationsApp = new Hono<ContextVariables>();
 
+	// GET /notifications - Retrieve all notifications
 	notificationsApp.get(NOTIFICATIONS_ROUTE, async (context) => {
-		const notificationsData = await notificationsService.findAll();
-		const res = { notificationsData };
-		context.get("cache").cache(res);
-		return context.json({ notificationsData });
+		const notificationsData = await notificationsService.findAll({});
+
+		context.get("cache").cache({ notificationsData });
+		return context.json({ notifications: notificationsData });
 	});
 
+	// GET /notifications/:id - Retrieve notification by ID
 	notificationsApp.get(
-		NOTIFICATIONS_FIND_ROUTE,
+		NOTIFICATIONS_GET_BY_ID_ROUTE,
 		zValidator("param", idSchema),
 		async (context) => {
 			const { id } = context.req.valid("param");
-			const notificationData = await notificationsService.find({ id });
-			const res = { notificationData };
-			context.get("cache").cache(res);
-			return context.json({ notificationData });
+			const notificationData = await notificationsService.get(id);
+
+			if (!notificationData) {
+				return context.json({ error: "Notification not found" }, 404);
+			}
+
+			context.get("cache").cache(notificationData);
+			return context.json({ notification: notificationData });
 		}
 	);
 
+	// POST /notifications/find - Find a single notification by criteria
+	notificationsApp.post(
+		NOTIFICATIONS_FIND_ROUTE,
+		zValidator("json", notificationSchema.partial()), // Allow partial search criteria
+		async (context) => {
+			const searchCriteria = context.req.valid("json");
+			const notificationData = await notificationsService.find(searchCriteria);
+
+			if (!notificationData) {
+				return context.json({ error: "Notification not found" }, 404);
+			}
+
+			context.get("cache").cache(notificationData);
+			return context.json({ notification: notificationData });
+		}
+	);
+
+	// POST /notifications/findAll - Find multiple notifications by criteria
+	notificationsApp.post(
+		NOTIFICATIONS_FIND_ALL_ROUTE,
+		zValidator("json", notificationSchema.partial()), // Allow partial search criteria
+		async (context) => {
+			const searchCriteria = context.req.valid("json");
+			const notificationsData = await notificationsService.findAll(searchCriteria);
+
+			if (!notificationsData || notificationsData.length === 0) {
+				return context.json({ error: "No notifications found" }, 404);
+			}
+
+			context.get("cache").cache(notificationsData);
+			return context.json({ notifications: notificationsData });
+		}
+	);
+
+	// POST /notifications - Create a new notification
 	notificationsApp.post(
 		NOTIFICATIONS_CREATE_ROUTE,
 		zValidator("json", notificationSchema),
 		async (context) => {
-			const {
-				type,
-				isRead,
-				userName,
-				userAvatar,
-				time,
-				content,
-				postTitle,
-				groupName,
-				commentImage
-			} = context.req.valid("json");
-			const createdNotificationData = await notificationsService.create({
-				type,
-				isRead,
-				userName,
-				userAvatar,
-				time,
-				content,
-				postTitle,
-				groupName,
-				commentImage
-			});
-			console.log(context.req.path);
+			const notificationData = context.req.valid("json");
+			const createdNotification = await notificationsService.create(notificationData);
+
 			context.get("cache").clearPath(context.req.path);
-			return context.json({ createdNotificationData });
+			return context.json({ notification: createdNotification }, 201);
 		}
 	);
 
+	// PATCH /notifications/:id - Update an existing notification
 	notificationsApp.patch(
 		NOTIFICATIONS_UPDATE_ROUTE,
 		zValidator("param", idSchema),
 		zValidator("json", notificationSchema.partial()), // Allow partial updates
 		async (context) => {
 			const { id } = context.req.valid("param");
-			const updatedData = context.req.valid("json"); // Cleaned, validated updated data
+			const updateData = context.req.valid("json");
 
-			// Perform update directly with `id` and updated fields
-			const updatedNotificationData = await notificationsService.update({
-				id,
-				...updatedData
-			});
+			const updatedNotification = await notificationsService.update(id, updateData);
 
-			console.log(`Notification with ID ${id} updated.`);
-			context.get("cache").clearPath(context.req.path); // Clear cache for this path
-			return context.json({ updatedNotificationData });
+			if (!updatedNotification) {
+				return context.json({ error: "Notification not found or not updated" }, 404);
+			}
+
+			context.get("cache").clearPath(context.req.path);
+			return context.json({ notification: updatedNotification });
 		}
 	);
 
+	// DELETE /notifications/:id - Delete a notification
 	notificationsApp.delete(
 		NOTIFICATIONS_DELETE_ROUTE,
 		zValidator("param", idSchema),
 		async (context) => {
-			const { id } = context.req.valid("param"); // Extract the notification ID
+			const { id } = context.req.valid("param");
 
-			// Perform deletion
-			await notificationsService.delete({ id });
+			const deletedNotification = await notificationsService.delete(id);
 
-			console.log(`Notification with ID ${id} deleted.`);
-			context.get("cache").clearPath(context.req.path); // Clear cache for this path
+			if (!deletedNotification) {
+				return context.json({ error: `Notification with ID ${id} not found` }, 404);
+			}
+
+			context.get("cache").clearPath(context.req.path);
 			return context.json({ message: `Notification ${id} deleted successfully.` });
 		}
 	);
