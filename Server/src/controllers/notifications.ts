@@ -6,6 +6,11 @@ import type { ContextVariables } from "../constants";
 import type { DBCreateNotification, DBNotification } from "../models/db";
 import type { IDatabaseResource } from "../storage/types";
 
+// TODO FIX CODE
+// FIX SERVICE ADD GET
+// GET RETURNS ALL NOTIFICATIONS
+// FIND ACCEPTS BODY AND FINDS BY BODY
+
 const idSchema = z.object({
 	id: z.string().min(1)
 });

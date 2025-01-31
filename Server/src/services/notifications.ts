@@ -14,17 +14,17 @@ export class NotificationsService
 	}
 
 	async find(data: Partial<DBNotification>): Promise<DBNotification | null> {
-		const notification = await this.prisma.notifications.findFirst({ where: { ...data } });
+		const notification = await this.prisma.notification.findFirst({ where: { ...data } });
 		return notification as DBNotification | null;
 	}
 
 	async findAll(data: Partial<DBNotification>): Promise<DBNotification[]> {
-		const notifications = await this.prisma.notifications.findMany({ where: { ...data } });
+		const notifications = await this.prisma.notification.findMany({ where: { ...data } });
 		return notifications as DBNotification[];
 	}
 
 	async create(data: DBCreateNotification): Promise<DBNotification> {
-		const createdNotification = await this.prisma.user.create({
+		const createdNotification = await this.prisma.notification.create({
 			data: { ...data }
 		});
 		return createdNotification as DBNotification;
@@ -41,7 +41,7 @@ export class NotificationsService
 	}
 
 	async delete(id: string): Promise<DBNotification | null> {
-		const deletedNotification = await this.prisma.user.delete({ where: { id: id } });
+		const deletedNotification = await this.prisma.notification.delete({ where: { id: id } });
 		return deletedNotification as DBNotification;
 	}
 }

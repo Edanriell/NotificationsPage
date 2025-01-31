@@ -1,0 +1,22 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Notification {
+    id           String   @id @default(uuid())
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+    isRead       Boolean  @db.Boolean
+    userName     String   @db.VarChar(200)
+    userAvatar   String   @db.VarChar(200)
+    time         String   @db.VarChar(200)
+    content      String?  @db.VarChar(500)
+    postTitle    String?  @db.VarChar(150)
+    groupName    String?  @db.VarChar(150)
+    commentImage String?  @db.VarChar(360)
+}
