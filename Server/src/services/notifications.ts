@@ -1,7 +1,6 @@
 import type { PrismaClient } from "@prisma/client";
 
 import type { DBCreateNotification, DBNotification } from "../models/db";
-
 import type { IDatabaseResource } from "./types";
 
 export class NotificationsService
@@ -11,6 +10,11 @@ export class NotificationsService
 
 	constructor(prisma: PrismaClient) {
 		this.prisma = prisma;
+	}
+
+	async get(id: string): Promise<DBNotification | null> {
+		const notification = await this.prisma.notification.findFirst({ where: { id } });
+		return notification as DBNotification | null;
 	}
 
 	async find(data: Partial<DBNotification>): Promise<DBNotification | null> {
@@ -31,17 +35,15 @@ export class NotificationsService
 	}
 
 	async update(id: string, data: Partial<DBNotification>): Promise<DBNotification | null> {
-		const updatedNotification = await this.prisma.notifications.update({
-			where: {
-				id
-			},
+		const updatedNotification = await this.prisma.notification.update({
+			where: { id },
 			data
 		});
 		return updatedNotification as DBNotification | null;
 	}
 
 	async delete(id: string): Promise<DBNotification | null> {
-		const deletedNotification = await this.prisma.notification.delete({ where: { id: id } });
+		const deletedNotification = await this.prisma.notification.delete({ where: { id } });
 		return deletedNotification as DBNotification;
 	}
 }
