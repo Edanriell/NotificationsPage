@@ -37,6 +37,21 @@ export function createMainApp(notificationsApp: Hono<ContextVariables>) {
 
 export function createORMApp() {
 	const prisma = new PrismaClient();
-	prisma.$connect();
+
+	prisma
+		.$connect()
+		.then(() => console.log("\x1b[32m✅ Successfully connected to the database!\x1b[0m"))
+		.catch(console.error);
+
 	return createMainApp(createNotificationsApp(new NotificationsService(prisma)));
 }
+
+const PORT = 3020;
+const app = createORMApp();
+
+Bun.serve({
+	port: Bun.env.PORT ? parseInt(Bun.env.PORT, 10) : 3000,
+	fetch: app.fetch
+});
+
+console.log(`🚀 Server is running on http://localhost:${PORT}`);

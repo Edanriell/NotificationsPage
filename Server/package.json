@@ -13,11 +13,11 @@
 		"prisma:studio": "npx prisma studio"
 	},
 	"dependencies": {
-		"@prisma/client": "^6.2.1",
-		"hono": "^4.6.19",
+		"@prisma/client": "^6.3.0",
+		"hono": "^4.6.20",
 		"pg": "^8.13.1",
 		"pino": "^9.6.0",
-		"prisma": "^6.2.1"
+		"prisma": "^6.3.0"
 	},
 	"devDependencies": {
 		"@hono/eslint-config": "^1.0.2",
@@ -25,7 +25,7 @@
 		"@types/bun": "latest",
 		"@types/eslint": "^9.6.1",
 		"@types/pg": "^8.11.11",
-		"bun-types": "^1.2.0",
+		"bun-types": "^1.2.2",
 		"depcheck": "^1.4.7",
 		"eslint": "^9.19.0",
 		"eslint-config-prettier": "^10.0.1",
