@@ -1,7 +1,16 @@
 {
 	"name": "Server",
+	"version": "0.1.0",
+	"author": "Edanriell",
+	"private": true,
+	"license": "MIT",
 	"scripts": {
-		"start:dev": "bun run --hot src/main.ts"
+		"start:dev": "bun run --hot src/main.ts",
+		"prisma:init": "npx prisma init",
+		"prisma:migrate:dev": "npx prisma migrate dev",
+		"prisma:migrate:prod": "npx prisma migrate deploy",
+		"prisma:generate": "npx prisma generate",
+		"prisma:studio": "npx prisma studio"
 	},
 	"dependencies": {
 		"@prisma/client": "^6.2.1",
