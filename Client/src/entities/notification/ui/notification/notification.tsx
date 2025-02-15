@@ -2,7 +2,7 @@ import { type Component } from "solid-js";
 
 import { Link } from "@shared/ui/link/ui";
 
-import { formatTime } from "../../lib";
+import { formatTime } from "../../lib/functions";
 import { type SingleNotification } from "../../model";
 
 import styles from "./notification.module.css";
