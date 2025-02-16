@@ -1,8 +1,9 @@
 import { getResource } from "@shared/api";
+import { env } from "@shared/config";
 
 import { SingleNotification } from "../model";
 
-const BASE_URL = process.env.API_BASE_URL || "http://localhost:3020/api/v1";
+const BASE_URL = ;
 
 export async function fetchNotifications(): Promise<SingleNotification[]> {
 	const endpoint = `${BASE_URL}/notifications/`;
