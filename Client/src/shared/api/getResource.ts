@@ -10,10 +10,12 @@ export async function getResource<T>(url: string): Promise<T> {
 
 		if (!response.ok) {
 			const errorText = await response.text();
+
 			throw new Error(`GET request failed with status ${response.status}: ${errorText}`);
 		}
 
 		const data: T = await response.json();
+
 		return data;
 	} catch (error) {
 		if (error instanceof Error) {

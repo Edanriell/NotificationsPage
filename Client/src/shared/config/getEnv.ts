@@ -2,28 +2,31 @@ type EnvVariables = {
 	VITE_API_BASE_URL: string;
 };
 
+// Helper functions to validate presence
+const ensureEnvString = (value: string | undefined, name: string): string => {
+	if (!value) {
+		throw new Error(`Environment variable ${name} is not set.`);
+	}
+
+	return value;
+};
+
+const ensureEnvBoolean = (value: string | undefined, name: string): boolean => {
+	if (!value) {
+		throw new Error(`Environment variable ${name} is not set.`);
+	}
+
+	if (value.toLowerCase() === "true") return true;
+	if (value.toLowerCase() === "false") return false;
+
+	throw new Error(`Environment variable ${name} must be 'true' or 'false'.`);
+};
+
 const getEnv = (): EnvVariables => {
 	const {
 		VITE_API_BASE_URL
 		// Destructure additional environment variables here
 	} = import.meta.env;
-
-	// Helper function to validate presence
-	const ensureEnvString = (value: string | undefined, name: string): string => {
-		if (!value) {
-			throw new Error(`Environment variable ${name} is not set.`);
-		}
-		return value;
-	};
-
-	const ensureEnvBoolean = (value: string | undefined, name: string): boolean => {
-		if (!value) {
-			throw new Error(`Environment variable ${name} is not set.`);
-		}
-		if (value.toLowerCase() === "true") return true;
-		if (value.toLowerCase() === "false") return false;
-		throw new Error(`Environment variable ${name} must be 'true' or 'false'.`);
-	};
 
 	// Validate and assign environment variables
 	return {
