@@ -17,14 +17,45 @@ export const NotificationList: Component = () => {
 		<ul class={styles["notification-list"]}>
 			<Suspense
 				fallback={
-					<>
-						<Skeleton width={"670rem"} height={"80rem"} borderRadius={"80px"} />
-					</>
+					<div
+						style={{
+							width: "100%",
+							display: "flex",
+							"flex-direction": "column",
+							"row-gap": "8rem"
+						}}
+					>
+						<Skeleton width={"670rem"} height={"80rem"} borderRadius={"8rem"} />
+					</div>
 				}
 			>
 				<Switch>
 					<Match when={notificationsData.error}>
-						<Skeleton width={"670rem"} height={"80rem"} borderRadius={"8rem"} />
+						<div
+							style={{
+								width: "670rem",
+								height: "80rem",
+								"border-radius": "8rem",
+								"background-color": "#f7fafd",
+								padding: "18rem 20rem 17rem 20rem",
+								display: "flex",
+								"flex-direction": "row",
+								"column-gap": "19rem",
+								"align-items": "center"
+							}}
+						>
+							<Skeleton width={"45rem"} height={"45rem"} borderRadius={"50%"} />
+							<div
+								style={{
+									display: "flex",
+									"flex-direction": "column",
+									"row-gap": "3rem"
+								}}
+							>
+								<Skeleton width={"350rem"} height={"20rem"} borderRadius={"8rem"} />
+								<Skeleton width={"80rem"} height={"20rem"} borderRadius={"8rem"} />
+							</div>
+						</div>
 					</Match>
 					<Match when={notificationsData()}>
 						<For each={notificationsData()}>
