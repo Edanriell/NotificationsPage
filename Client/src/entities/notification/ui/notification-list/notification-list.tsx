@@ -2,6 +2,8 @@ import { type Component, createResource, For, Match, Suspense, Switch } from "so
 
 import { fetchNotifications } from "@entities/notification/api";
 
+import { Skeleton } from "@shared/ui/skeleton/ui";
+
 import { SingleNotification } from "../../model";
 
 import { Notification } from "../notification";
@@ -13,10 +15,16 @@ export const NotificationList: Component = () => {
 
 	return (
 		<ul class={styles["notification-list"]}>
-			<Suspense fallback={<div>Loading...</div>}>
+			<Suspense
+				fallback={
+					<>
+						<Skeleton width={"670rem"} height={"80rem"} borderRadius={"80px"} />
+					</>
+				}
+			>
 				<Switch>
 					<Match when={notificationsData.error}>
-						<span>Error: {notificationsData.error.message}</span>
+						<Skeleton width={"670rem"} height={"80rem"} borderRadius={"8rem"} />
 					</Match>
 					<Match when={notificationsData()}>
 						<For each={notificationsData()}>
