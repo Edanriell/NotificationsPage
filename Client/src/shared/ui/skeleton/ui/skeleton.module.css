@@ -8,6 +8,7 @@
 	width: 100%;
 	height: 50rem;
 	animation: skeleton-animation 1.5s ease-in-out infinite;
+	flex: 0 0 auto;
 }
 
 @keyframes skeleton-animation {
