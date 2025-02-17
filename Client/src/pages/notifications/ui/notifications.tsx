@@ -51,7 +51,13 @@ export const NotificationsPage: Component = () => {
 								</Switch>
 							</Suspense>
 						</h2>
-						<Button>Mark all as read</Button>
+						<Suspense fallback={<div>Loading...</div>}>
+							<Switch>
+								<Match when={unreadNotifications()?.length! > 0}>
+									<Button>Mark all as read</Button>
+								</Match>
+							</Switch>
+						</Suspense>
 					</header>
 					<NotificationList />
 				</section>
