@@ -3,24 +3,13 @@ import { type Component, createResource, For, Match, Suspense, Switch } from "so
 import { fetchNotifications } from "@entities/notification/api";
 
 import { Skeleton } from "@shared/ui/skeleton/ui";
+import { getRandomNumber } from "@shared/lib/functions";
 
 import { SingleNotification } from "../../model";
 
 import { Notification } from "../notification";
 
 import styles from "./notification-list.module.css";
-
-// TODO Put in shared
-const getRandomNumber = (min: number = 1, max: number = 100): number => {
-	if (min > max) {
-		throw new Error("Minimum value cannot be greater than maximum value.");
-	}
-
-	const adjustedMin = Math.ceil(min);
-	const adjustedMax = Math.floor(max);
-
-	return Math.floor(Math.random() * (adjustedMax - adjustedMin + 1)) + adjustedMin;
-};
 
 export const NotificationList: Component = () => {
 	const [notifications] = createResource<SingleNotification[], Error>(fetchNotifications);
