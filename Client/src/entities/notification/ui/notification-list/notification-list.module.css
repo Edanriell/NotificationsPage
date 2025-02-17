@@ -14,7 +14,19 @@
 	width: 100%;
 }
 
-.notification-list__error-message-wrapper {
+.notification-list__fallback {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	row-gap: 8rem
+}
+
+.notification-list__error-message {
+	position: relative;
+	display: block;
+}
+
+.error-message {
 	width: 100%;
 	background-color: #fddede;
 	padding: 16rem;
@@ -22,7 +34,7 @@
 	margin: 33rem 0 33rem 0;
 }
 
-.notification-list__error-message {
+.error-message__text {
 	font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
 	text-align: center;
 	font-size: 16rem;
