@@ -1,1 +1,2 @@
-export * from "./fetchNotifications.ts";
+export * from "./fetchNotifications";
+export * from "./fetchUnreadNotifications";
