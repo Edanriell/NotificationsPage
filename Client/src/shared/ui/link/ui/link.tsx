@@ -1,4 +1,5 @@
 import { children, type Component, JSX } from "solid-js";
+import { A } from "@solidjs/router";
 
 import styles from "./link.module.css";
 
@@ -6,10 +7,12 @@ type LinkProps = {
 	children: JSX.Element;
 	href: string;
 	linkColor: "dark-grey-blue" | "dark-grey" | "blue";
+	class?: string;
 };
 
 export const Link: Component<LinkProps> = (props) => {
 	const safeChildren = children(() => props.children);
+	const linkClasses = () => props.class ?? "";
 
 	const getLinkClass = (linkColor: string) => {
 		switch (linkColor) {
@@ -24,8 +27,11 @@ export const Link: Component<LinkProps> = (props) => {
 	};
 
 	return (
-		<a class={styles["link"] + " " + getLinkClass(props.linkColor)} href={props.href}>
+		<A
+			class={styles["link"] + " " + getLinkClass(props.linkColor) + " " + linkClasses()}
+			href={props.href}
+		>
 			{safeChildren()}
-		</a>
+		</A>
 	);
 };
